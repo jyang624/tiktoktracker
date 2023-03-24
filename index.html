@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <body>
+  <body onload="countPageLoad()">
 
     <h1>My First Heading</h1>
-    <p>My first paragraph.</p>
+    <p>Number of page loads: <span id="countDisplay">0</span></p>
 
   </body>
 </html>
+
+<script>
+var count = 0;
+</script>
+
+<script>
+function countPageLoad() {
+  count++;
+}
+</script>
