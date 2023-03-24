@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script>
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      var count = parseInt(getCookie("pageLoads")) || 0;
+
+      function countPageLoad() {
+        count++;
+        setCookie("pageLoads", count, 365);
+        document.getElementById("countDisplay").innerHTML = count;
+      }
+    </script>
+  </head>
   <body onload="countPageLoad()">
 
     <h1>My First Heading</h1>
     <p>Number of page loads: <span id="countDisplay">0</span></p>
-
-    <script>
-        var count = 0;
-
-        function countPageLoad() {
-            count++;
-            document.getElementById("countDisplay").innerHTML = count;
-        }
-    </script>
 
   </body>
 </html>
