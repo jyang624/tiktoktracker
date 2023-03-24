@@ -5,15 +5,14 @@
     <h1>My First Heading</h1>
     <p>Number of page loads: <span id="countDisplay">0</span></p>
 
+    <script>
+        var count = 0;
+
+        function countPageLoad() {
+            count++;
+            document.getElementById("countDisplay").innerHTML = count;
+        }
+    </script>
+
   </body>
 </html>
-
-<script>
-var count = 0;
-</script>
-
-<script>
-function countPageLoad() {
-  count++;
-}
-</script>
